@@ -1,4 +1,8 @@
 TravelBuddy::Application.routes.draw do
+
+  devise_for :users
+  root :to => "static#home"
+
   get "trip/new"
   get "trip/search"
   get "static/home"
