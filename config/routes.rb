@@ -1,5 +1,7 @@
 TravelBuddy::Application.routes.draw do
 
+  get "user/show"
+  get "user/profile"
   devise_for :users
   root :to => "static#home"
 
