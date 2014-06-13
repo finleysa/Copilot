@@ -10,6 +10,8 @@ gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'bcrypt', '~> 3.1.7'
+gem 'haml-rails'
+
 
 group :doc do
   gem 'sdoc', require: false
