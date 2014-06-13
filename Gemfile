@@ -15,7 +15,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml-rails'
 gem 'foundation-rails'
 gem 'devise'
-
+gem 'omniauth-facebook'
+gem 'figaro'
 
 
 group :doc do
