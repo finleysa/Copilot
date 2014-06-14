@@ -15,8 +15,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml-rails'
 gem 'foundation-rails'
 gem 'devise'
+gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'protected_attributes'
 
 
 group :doc do
