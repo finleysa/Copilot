@@ -14,8 +14,30 @@
  *= require_tree .
  */
 
-a {
-  color: white;
+$yellow: #BBFF32;
+$lightblue: #3BE7FF;
+$blue: #6222E8;
+$red: #FF3433;
+$orange: #E8A122;
+
+/* Global */
+
+.top-bar {
+  background: $orange !important;
+
+  .top-bar-section{
+    ul{
+      li{
+        a{
+        background: $orange !important;
+        }
+
+        a:hover{
+          background: $blue !important;
+        }
+      }
+    }
+  }
 }
 
 /* header */
@@ -31,6 +53,30 @@ a {
   line-height: 1;
 }
 #logo:hover {
-  color: #fff;
+  color: $blue;
   text-decoration: none;
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid lightgrey;
+  color: lightgray;
+  a {
+    color: gray;
+    &:hover {
+      color: darkgrey;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
 }
