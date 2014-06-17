@@ -1,6 +1,6 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   def show
-    @user = User.find(
+    @user = User.find(params[:id])
   end
 end

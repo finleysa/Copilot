@@ -4,9 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :image
   validates_presence_of :username
   validates_uniqueness_of :username
+
+  #carrierwave
+  mount_uploader :image, ImageUploader
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -38,5 +41,5 @@ class User < ActiveRecord::Base
   def password_required?
     super && provider.blank?
   end
-  
+
 end

@@ -19,6 +19,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'protected_attributes'
+gem 'carrierwave'
 
 
 group :doc do
