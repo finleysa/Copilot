@@ -1,13 +1,13 @@
-- if (current_user == @user)
-  %h1 Your Profile
-- else
-  %h1 #{@user.username}'s Profile
-%h3= @user.username
-%h4= @user.email
+.row
+  .large-12.columns
+    %h1 #{@user.username}'s Profile
+    .image
+      = image_tag @user.image_url.to_s, class: 'profile-image'
 
-- if current_user == @user
-  Drafts
+    %h4= @user.email
 
--if current_user
-  -if (current_user == @user)
-    %h4 This is your profile
+    /- if current_user == @user
+
+    -if current_user
+      -if (current_user == @user)
+        %h4 This is your profile

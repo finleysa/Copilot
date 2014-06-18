@@ -20,7 +20,19 @@ $blue: #6222E8;
 $red: #FF3433;
 $orange: #E8A122;
 
-/* Global */
+
+/* Body */
+
+#container {
+  button {
+    background: $blue;
+    a {
+      color: white;
+    }
+  }
+}
+
+/* header */
 
 .top-bar {
   background: $orange !important;
@@ -40,7 +52,6 @@ $orange: #E8A122;
   }
 }
 
-/* header */
 #logo {
   float: left;
   margin-right: 10px;
@@ -78,5 +89,20 @@ footer {
       float: left;
       margin-left: 10px;
     }
+  }
+}
+
+/* Profile */
+
+.image{
+  width: 200px;
+  margin: 40px;
+	box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+
+	zoom: 1;
+
+  .profile-image {
+    height: 200px;
+    width: 200px;
   }
 }

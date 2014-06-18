@@ -20,6 +20,7 @@ gem 'omniauth-facebook'
 gem 'figaro'
 gem 'protected_attributes'
 gem 'carrierwave'
+gem 'rmagick'
 
 
 group :doc do

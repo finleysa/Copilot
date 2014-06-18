@@ -4,7 +4,7 @@
   %section.top-bar-section
     %ul.right
       - if user_signed_in?
-        %li Logged in as <strong> #{current_user.email} </strong>
+        %li= link_to "Logged in as #{current_user.email}", current_user
         %li= link_to "profile", current_user
         %li= link_to 'Edit Profile', edit_user_registration_path
         %li= link_to 'Logout', destroy_user_session_path, method: :delete
