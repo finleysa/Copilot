@@ -1,4 +1,6 @@
 TravelBuddy::Application.routes.draw do
+  get "trips/new"
+  get "trips/show"
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :users
 

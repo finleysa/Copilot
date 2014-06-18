@@ -14,17 +14,30 @@
  *= require_tree .
  */
 
+@import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700);
+@import url(http://fonts.googleapis.com/css?family=Tinos);
+
 $yellow: #BBFF32;
 $lightblue: #3BE7FF;
-$blue: #6222E8;
+$blue: #00a9d5;
 $red: #FF3433;
 $orange: #E8A122;
+$blornge: #504531;
+
+h1, h2, h3, h4, h5 {
+  font-family: "Tinos" !important;
+  color: white !important;
+}
 
 .space {
   margin: 20px 0;
 }
 
 /* Body */
+
+body {
+  background-image: image-url('dark_Tire2.png') !important;
+}
 
 #container {
   button {
@@ -38,7 +51,7 @@ $orange: #E8A122;
 /* header */
 
 .top-bar {
-  background: $orange !important;
+  background: $blue !important;
 
   .top-bar-section{
     ul{
@@ -67,7 +80,7 @@ $orange: #E8A122;
   line-height: 1;
 }
 #logo:hover {
-  color: $blue;
+  color: $red;
   text-decoration: none;
 }
 
