@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :image
-  validates_presence_of :username
-  validates_uniqueness_of :username
+  validates_presence_of :username, :email, :image
+  validates_uniqueness_of :username, :email
 
   #carrierwave
   mount_uploader :image, ImageUploader

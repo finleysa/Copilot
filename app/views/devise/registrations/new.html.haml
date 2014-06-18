@@ -6,12 +6,16 @@
       %div
         = f.label :image
         = f.file_field :image
-        %div
-          = f.label :email
-          %br/
-          = f.email_field :email, autofocus: true
+      %div
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true
 
       - if f.object.password_required?
+        %div
+          = f.label :username
+          %br/
+          = f.text_field :username
         %div
           = f.label :password
           %br/
