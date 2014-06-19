@@ -1,28 +1,32 @@
 .space
 .row
-  .large-3.columns
+  .large-12.columns
     - if controller_name != 'sessions'
-      %button
-        = link_to "Sign in", new_session_path(resource_name)
+      = link_to "Sign in", new_session_path(resource_name), class: "button button-block button-rounded button-highlight button-large glow"
       %br/
-  .large-3.columns
+.row
+  .large-12.columns
     - if devise_mapping.omniauthable?
       - resource_class.omniauth_providers.each do |provider|
-        %button
-          = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
-        %br/
-  .large-6.columns
-- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-  = link_to "Forgot your password?", new_password_path(resource_name)
-  %br/
-- if devise_mapping.confirmable? && controller_name != 'confirmations'
-  = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
-  %br/
-- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-  = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
-  %br/
-
-- if devise_mapping.registerable? && controller_name != 'registrations'
-  %button
-    = link_to "Sign up", new_registration_path(resource_name)
-  %br/
+        = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "button button-block button-action button-large glow"
+      %br/
+.row
+  .large-12.columns
+    - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+      = link_to "Forgot your password?", new_password_path(resource_name), class: "button button-3d-caution"
+      %br/
+.row
+  .large-12.columns
+    - if devise_mapping.confirmable? && controller_name != 'confirmations'
+      = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
+      %br/
+.row
+  .large-12.columns
+    - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+      = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
+      %br/
+.row
+  .large-12.columns
+    - if devise_mapping.registerable? && controller_name != 'registrations'
+      = link_to "Sign up", new_registration_path(resource_name), class: "button button-block button-rounded button-primary button-large glow"
+      %br/

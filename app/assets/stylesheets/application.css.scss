@@ -16,6 +16,9 @@
 
 @import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700);
 @import url(http://fonts.googleapis.com/css?family=Tinos);
+@import url(http://fonts.googleapis.com/css?family=Monoton);
+@import url(http://fonts.googleapis.com/css?family=Rock+Salt);
+@import url(http://fonts.googleapis.com/css?family=Trade+Winds);
 
 $yellow: #BBFF32;
 $lightblue: #3BE7FF;
@@ -24,9 +27,18 @@ $red: #FF3433;
 $orange: #E8A122;
 $blornge: #504531;
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, label {
   font-family: "Tinos" !important;
   color: white !important;
+}
+
+form {
+  legend {
+    border-radius: 5px;
+  }
+  label {
+    font-size: 1em;
+  }
 }
 
 .space {
@@ -36,7 +48,7 @@ h1, h2, h3, h4, h5 {
 /* Body */
 
 body {
-  background-image: image-url('dark_Tire2.png') !important;
+  background-image: image-url('fake_brick.png') !important;
 }
 
 #container {
@@ -54,14 +66,19 @@ body {
   background: $blue !important;
 
   .top-bar-section{
+    .menu{
+      height: 45px !important;
+    }
     ul{
       li{
+        padding: 0;
+
         a{
         background: $orange !important;
         }
 
         a:hover{
-          background: $blue !important;
+          background: $red !important;
         }
       }
     }
@@ -70,14 +87,15 @@ body {
 
 #logo {
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
+  margin-left: .5em;
+  font-size: 1.8em;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
+  font-family: "Trade Winds"
 }
 #logo:hover {
   color: $red;
