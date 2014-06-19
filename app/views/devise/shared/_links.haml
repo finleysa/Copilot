@@ -13,7 +13,7 @@
 .row
   .large-12.columns
     - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-      = link_to "Forgot your password?", new_password_path(resource_name), class: "button button-3d-caution"
+      = link_to "Forgot your password?", new_password_path(resource_name), class: "button button-block button-rounded button-caution button-large glow"
       %br/
 .row
   .large-12.columns

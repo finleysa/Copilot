@@ -99,8 +99,14 @@ body {
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
-  font-family: "Trade Winds"
+  font-family: "Trade Winds" !important;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
 }
+
 #logo:hover {
   color: $red;
   text-decoration: none;
