@@ -27,6 +27,15 @@ $red: #FF3433;
 $orange: #E8A122;
 $blornge: #504531;
 
+#map-canvas {
+  height: 200px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
 h1, h2, h3, h4, h5, label, a, i, p {
   font-family: "Tinos" !important;
   color: white !important;
