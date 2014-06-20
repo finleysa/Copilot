@@ -1,1 +1,17 @@
-#map-canvas
+#map
+
+.row
+  .large-8.columns
+    = simple_form_for :trip, :url => {:action => :create} do |f|
+      .row
+        .small-6.columns
+          = f.input :location_start, label: 'Starting Location'
+          = f.hidden_field :lat_local
+          = f.hidden_field :lng_local
+        .small-6.columns
+          = f.input :location_end, label: 'Destination'
+          = f.hidden_field :lat_dest
+          = f.hidden_field :lng_dest
+      = f.button :submit
+  .large-4.columns
+    %button

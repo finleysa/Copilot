@@ -7,6 +7,7 @@ TravelBuddy::Application.routes.draw do
   get "trips/new"
   get "trips/show"
   get "static/home"
+  post "trips/create"
 
   #match 'auth/:provider/callback', to 'sessions#create'
   #match 'auth/failure', to: redirect('/')

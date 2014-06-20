@@ -21,7 +21,7 @@ gem 'figaro'
 gem 'protected_attributes'
 gem 'carrierwave'
 gem 'rmagick'
-
+gem 'simple_form'
 
 group :doc do
   gem 'sdoc', require: false
