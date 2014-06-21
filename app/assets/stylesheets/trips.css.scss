@@ -1,3 +1,51 @@
 // Place all the styles related to the Trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$yellow: #BBFF32;
+$lightblue: #3BE7FF;
+$blue: #00a9d5;
+$red: #FF3433;
+$orange: #E8A122;
+$blornge: #504531;
+
+fieldset{
+
+  background: $blue;
+
+  label {
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  }
+
+  select, input {
+    height: 35px;
+    font-size: 10px;
+  }
+}
+
+ol {
+  li {
+    color: white;
+  }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea {
+  height: 2.2em;
+}
