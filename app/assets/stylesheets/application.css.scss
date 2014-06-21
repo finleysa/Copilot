@@ -33,6 +33,17 @@ $blornge: #504531;
   margin: 20px;
 }
 
+#home-container {
+  background-size: cover;
+  background-image: image_url('roadtrip.jpg') !important;
+  height:40em;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+}
+
 html, body {
   height: 100%;
   margin: 0px;
