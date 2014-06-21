@@ -3,8 +3,10 @@
   $(document).ready(init);
 
   var map;
+  // google converted lat long
   var latLngStart;
   var latLngEnd;
+  //
   var latStart;
   var latEnd;
   var lngStart;
@@ -142,11 +144,6 @@ var map_style = [
 
     geocodeLocal(start, function(startGeo){
       geocodeDest(end, function(endGeo){
-        $.getJSON('https://maps.googleapis.com/maps/api/distancematrix/json?origins='+start+'&destinations='+end+'&mode=driving&key=AIzaSyAmN0r1eJV2qHS3UZUpS8ytISU7etkg0ZI',
-          function(data) {
-            console.log(data);
-          }
-        );
 
         var drivePath = new google.maps.Polyline({
           path: [startGeo, endGeo],
@@ -158,6 +155,7 @@ var map_style = [
 
         drivePath.setMap(map);
 
+        calculateDistances();
 
       });
     });
@@ -212,5 +210,41 @@ var map_style = [
       title: loc,
       icon: "../assets/car.jpeg"
     });
+  }
+
+  ///////////// DISTANCE CALCULATION //////////////
+  function calculateDistances() {
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+    {
+      origins: [latLngStart],
+      destinations: [latLngEnd],
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.IMPERIAL,
+      avoidHighways: false,
+      avoidTolls: false
+    }, callback);
+  }
+
+  function callback(response, status){
+    console.log(status);
+    if(status == 'OK'){
+      var distance = response.rows[0].elements[0].distance.text;
+      var time = response.rows[0].elements[0].duration.text;
+      console.log(response.rows[0].elements[0]);
+      $('#trip_distance').val(distance);
+      $('#trip_time').val(time);
+
+      $('#travel_info').empty();
+      $div = $('<div>');
+      $distance = $('<h4>').text(distance);
+      $time = $('<h4>').text(time);
+      $('#travel_info').addClass('animated flip');
+      $('#travel_info').append($div.append($distance, $time));
+
+    }
+
+
+
   }
 })();

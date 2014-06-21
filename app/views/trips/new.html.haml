@@ -1,5 +1,6 @@
 #map
-
+#travel
+  #travel_info
 .row
   .large-4.columns
     #instructions
@@ -21,11 +22,13 @@
             = f.input :location_end, label: 'Destination'
             = f.hidden_field :lat_dest
             = f.hidden_field :lng_dest
+            = f.hidden_field :distance
+            = f.hidden_field :time
           .large-4.columns
             = f.input :vehicle
             = f.input :mpg
+            = f.input :seats_available, :collection => 1..7
           .large-4.columns
             = f.input :date, as: :date
 
-
-        = f.button :submit
+        = f.button :submit, class: 'button button-block button-rounded button-royal button-large'
