@@ -7,12 +7,9 @@ class TripsController < ApplicationController
 
 
   def create
-    @trip = current_user.trips.build(trip_params)
-  end
-
-  private
-
-    def trips_params
-      trips.require(:trip).permit(:location_start, :location_end)
+    @trip = current_user.trips.build(params[:trip])
+    if @trip.save
+      redirect_to user
     end
+  end
 end
