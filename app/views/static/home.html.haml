@@ -1,9 +1,11 @@
 #home-container
   .row
-    .small-12-columns
-      %h1 Welcome to Copilot!
+    .large-3.columns
+    %h1.animated.fadeInLeft Welcome to Copilot!
+    .large-9-columns
   .row
-    .large-8.columns
+    .large-6.columns
+    .large-6.columns.animated.fadeInRight
+      = image_tag "map.png", :class => 'border'
       %h2 This is an app created to help people get together for similar trips and share the gas money.
-    .large-4.columns
-      = link_to "Sign up now!", new_user_registration_path, class: "button button-3d-action button-circle"
+      = link_to "Sign up now!", new_user_registration_path, class: "button button-3d-action button-large"
