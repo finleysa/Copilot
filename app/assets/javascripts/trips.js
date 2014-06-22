@@ -16,8 +16,9 @@
   var mpg;
   var GAS_PRICE = 3.65;
 
-//////////////////// STRAT MAP STYLE ////////////////////
-var map_style = [
+  //////////////////// START MAP STYLE ////////////////////
+
+  var map_style = [
     {
         "featureType": "landscape",
         "stylers": [
@@ -121,9 +122,14 @@ var map_style = [
         ]
     }
 ];
+
+
+
 //////////////////// END MAP STYLE ////////////////////
 
   function init(){
+
+
     var isMap = $('#map');
 
     if(isMap){

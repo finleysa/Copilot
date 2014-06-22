@@ -8,9 +8,5 @@ describe "Static pages" do
       visit '/static/home'
       expect(page).to have_content('Copilot')
     end
-
-    it "should have the content 'Copilot'" do
-      visit '/static/home'
-    end
   end
 end

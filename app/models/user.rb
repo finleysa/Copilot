@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :image
   validates_presence_of :username, :email, :image
-  validates_uniqueness_of :username, :email
-
+  validates_uniqueness_of :email
+  validates :username, uniqueness: true,
+                       format: { with: /\A[a-zA-Z0-9]+\z/, message: "username can only contain letters and numbers"}
+                       
   #carrierwave
   mount_uploader :image, ImageUploader
 

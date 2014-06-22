@@ -5,6 +5,8 @@
     %ul.right
       - if user_signed_in?
         %li.divider
+        %li= link_to 'Create Trip', trips_new_path
+        %li.divider
         %li= link_to "Logged in as #{current_user.email}", current_user
         %li.divider
         %li.has-form.has-dropdown.not-click
