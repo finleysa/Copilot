@@ -14,6 +14,7 @@ $blue: #00a9d5;
 $red: #FF3433;
 $orange: #E8A122;
 $blornge: #504531;
+$purple: #99389f;
 
 #travel{
   position: relative;
@@ -23,8 +24,14 @@ $blornge: #504531;
     top: -10em;
     right: 4em;
 
-    h3{
+    h4 {
+      color: $red !important;
       font-family: 'Tinos' !important;
+      text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
     }
   }
 }
@@ -68,13 +75,4 @@ input[type="time"],
 input[type="url"],
 textarea {
   height: 2.2em;
-}
-
-#travel_info {
-  position: relative;
-  top: -6em;
-
-  h3 {
-    color: green;
-  }
 }

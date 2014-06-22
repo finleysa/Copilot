@@ -1,8 +1,8 @@
-#map
+#map.animated.fadeInDownBig
 #travel
   #travel_info
 .row
-  .large-4.columns
+  .large-4.columns.animated.fadeInUpBig
     #instructions
       %h2 Instructions
       %ol
@@ -11,7 +11,7 @@
         %li Click 'Geocode' button
         %a{:id => 'geocode', :class => 'button button-3d-action button-pill'} Geocode
 
-  .large-8.columns
+  .large-8.columns.animated.fadeInRightBig
     = simple_form_for :trip, :url => {:action => :create} do |f|
       %fieldset
         .row.trip-info

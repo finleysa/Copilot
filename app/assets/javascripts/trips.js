@@ -13,6 +13,8 @@
   var lngEnd;
   var loc = {};
   var markers = [];
+  var mpg;
+  var GAS_PRICE = 3.65;
 
 //////////////////// STRAT MAP STYLE ////////////////////
 var map_style = [
@@ -227,24 +229,26 @@ var map_style = [
   }
 
   function callback(response, status){
-    console.log(status);
     if(status == 'OK'){
+      console.log(response.rows[0].elements[0]);
       var distance = response.rows[0].elements[0].distance.text;
       var time = response.rows[0].elements[0].duration.text;
-      console.log(response.rows[0].elements[0]);
+      mpg = $('#trip_mpg').val();
       $('#trip_distance').val(distance);
       $('#trip_time').val(time);
+      var totalCost = Math.floor(((response.rows[0].elements[0].distance.value / 1609) / mpg) * GAS_PRICE);
+      totalCost = numeral(totalCost).format('$0,0.00');
 
       $('#travel_info').empty();
       $div = $('<div>');
       $distance = $('<h4>').text(distance);
       $time = $('<h4>').text(time);
+      $mpg = $('<h4>').text('Estimated Cost: ' + totalCost);
+
       $('#travel_info').addClass('animated flip');
-      $('#travel_info').append($div.append($distance, $time));
+      $('#travel_info').append($div.append($distance, $time, $mpg));
 
     }
-
-
-
   }
+
 })();
