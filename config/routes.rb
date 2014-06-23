@@ -1,6 +1,8 @@
 TravelBuddy::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  resources :users
+  resources :users do
+    resources :trips
+  end
 
   root :to => "static#home"
 
