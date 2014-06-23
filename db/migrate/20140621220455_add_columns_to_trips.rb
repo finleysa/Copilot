@@ -6,5 +6,6 @@ class AddColumnsToTrips < ActiveRecord::Migration
     add_column :trips, :vehicle, :string
     add_column :trips, :mpg, :string
     add_column :trips, :seats_available, :string
+    add_column :trips, :distance, :string
   end
 end

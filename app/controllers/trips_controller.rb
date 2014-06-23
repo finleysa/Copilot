@@ -5,9 +5,9 @@ class TripsController < ApplicationController
   def new
   end
 
-  def show
+  def search
+    @trips = current_user.trips.all
   end
-
 
   def create
     @trip = current_user.trips.new(trip_params)
