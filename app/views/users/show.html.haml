@@ -1,6 +1,6 @@
 .row
-  .large-12.columns
-    %h1 #{@user.username}'s Profile
+  .large-6.columns
+    %h1.animated.fadeInLeft #{@user.username}'s Profile
     .image
       = image_tag @user.image_url.to_s, class: 'profile-image'
 
@@ -8,6 +8,27 @@
 
     /- if current_user == @user
 
+  .large-6.columns
     -if current_user
       -if (current_user == @user)
-        %h4 This is your profile
+        = link_to "Edit Profile Page", "#", class: "button button-3d-action button-large"
+        %fieldset
+          %h4 Welcome #{@user.username}!
+          - if @user.trips.count > 0
+            %h4 Number of Trips: #{@user.trips.count}
+            %table
+              %tr
+                %th Date
+                %th Start Location
+                %th End Location
+                %th Distance
+              - @user.trips.each do |a|
+                %tr
+                  %td #{a.date}
+                  %td #{a.location_start}
+                  %td #{a.location_end}
+                  %td #{a.distance}
+
+    %h3 About me:
+    %h3 What I like to listen to on road trips:
+    %h3
