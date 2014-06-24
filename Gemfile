@@ -22,6 +22,7 @@ gem 'protected_attributes'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'simple_form'
+gem 'ransack', github: "activerecord-hackery/ransack", branch: "rails-4"
 
 group :doc do
   gem 'sdoc', require: false

@@ -10,11 +10,12 @@
 
 $yellow: #BBFF32;
 $lightblue: #3BE7FF;
-$blue: #00a9d5;
+$blue: #35484D;
 $red: #FF3433;
 $orange: #E8A122;
 $blornge: #504531;
 $purple: #99389f;
+$green: #84bf00;
 
 #travel{
   position: relative;
@@ -57,6 +58,29 @@ fieldset{
 ol {
   li {
     color: white;
+  }
+}
+
+li {
+  a {
+    span {
+      color: $green;
+    }
+  }
+}
+.f-dropdown {
+  padding: 20px;
+  border: 2px solid $orange;
+  border-radius: 10px;
+
+  h4 {
+    font-size: 1em;
+    color: blue !important;
+  }
+
+  span {
+    font-weight: bold;
+    color: black;
   }
 }
 

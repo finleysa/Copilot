@@ -1,0 +1,19 @@
+.row
+  .large-4.columns
+    = search_form_for @search do |f|
+      %fieldset
+        %legend SEARCH!
+        = f.label :location_start_cont, "Starting Location"
+        = f.text_field :location_start_cont
+    %ul
+    - @trips.each do |trip|
+      %li
+        %a{"data-dropdown" => "drop#{trip.id}", :href => "#"} <span>#{trip.cost}</span> #{trip.location_start} --> #{trip.location_end}
+      .f-dropdown.large{"data-dropdown-content" => "", :id => "drop#{trip.id}"}
+        %h4{:href => "#"} <span>Vehicle:</span> #{trip.vehicle}
+        %h4{:href => "#"} <span>Est. Gas Cost:</span> #{trip.cost}
+        %h4{:href => "#"} <span>Distance:</span> #{trip.distance}
+        %h4{:href => "#"} <span>Travel Time:</span> #{trip.time}
+
+  .large-8.columns
+    #map

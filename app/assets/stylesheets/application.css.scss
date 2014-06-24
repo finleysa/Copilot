@@ -22,10 +22,11 @@
 
 $yellow: #BBFF32;
 $lightblue: #3BE7FF;
-$blue: #00a9d5;
+$blue: #35484D;
 $red: #FF3433;
 $orange: #E8A122;
 $blornge: #504531;
+$green: #84bf00;
 
 #map {
   height: 400px;
@@ -99,9 +100,13 @@ body {
   background-image: image-url('fake_brick.png') !important;
 }
 
+ul {
+  list-style: none !important;
+}
+
 #container {
   button {
-    background: $blue;
+    background: $green;
     a {
       color: white;
     }
@@ -172,7 +177,7 @@ footer {
   }
   ul {
     float: right;
-    list-style: none;
+    list-style-type: none;
     li {
       float: left;
       margin-left: 10px;

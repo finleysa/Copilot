@@ -1,15 +1,14 @@
 TravelBuddy::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  resources :users do
-    resources :trips
-  end
+  resources :users
+  resources :trips, only: [:index, :create, :destroy]
 
   root :to => "static#home"
 
   get "trips/new"
-  get "trips/show"
+  get "trips/index"
+  post"trips/create"
   get "static/home"
-  post "trips/create"
 
   #match 'auth/:provider/callback', to 'sessions#create'
   #match 'auth/failure', to: redirect('/')

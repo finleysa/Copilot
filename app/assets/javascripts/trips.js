@@ -18,116 +18,116 @@
 
   //////////////////// START MAP STYLE ////////////////////
 
-  var map_style = [
-    {
-        "featureType": "landscape",
-        "stylers": [
-            {
-                "hue": "#F1FF00"
-            },
-            {
-                "saturation": -27.4
-            },
-            {
-                "lightness": 9.4
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "stylers": [
-            {
-                "hue": "#0099FF"
-            },
-            {
-                "saturation": -20
-            },
-            {
-                "lightness": 36.4
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "stylers": [
-            {
-                "hue": "#00FF4F"
-            },
-            {
-                "saturation": 0
-            },
-            {
-                "lightness": 0
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "stylers": [
-            {
-                "hue": "#FFB300"
-            },
-            {
-                "saturation": -38
-            },
-            {
-                "lightness": 11.2
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "stylers": [
-            {
-                "hue": "#00B6FF"
-            },
-            {
-                "saturation": 4.2
-            },
-            {
-                "lightness": -63.4
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "stylers": [
-            {
-                "hue": "#9FFF00"
-            },
-            {
-                "saturation": 0
-            },
-            {
-                "lightness": 0
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    }
-];
 
 
 
 //////////////////// END MAP STYLE ////////////////////
 
   function init(){
+    var map_style = [
+      {
+          "featureType": "landscape",
+          "stylers": [
+              {
+                  "hue": "#F1FF00"
+              },
+              {
+                  "saturation": -27.4
+              },
+              {
+                  "lightness": 9.4
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      },
+      {
+          "featureType": "road.highway",
+          "stylers": [
+              {
+                  "hue": "#0099FF"
+              },
+              {
+                  "saturation": -20
+              },
+              {
+                  "lightness": 36.4
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      },
+      {
+          "featureType": "road.arterial",
+          "stylers": [
+              {
+                  "hue": "#00FF4F"
+              },
+              {
+                  "saturation": 0
+              },
+              {
+                  "lightness": 0
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      },
+      {
+          "featureType": "road.local",
+          "stylers": [
+              {
+                  "hue": "#FFB300"
+              },
+              {
+                  "saturation": -38
+              },
+              {
+                  "lightness": 11.2
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      },
+      {
+          "featureType": "water",
+          "stylers": [
+              {
+                  "hue": "#00B6FF"
+              },
+              {
+                  "saturation": 4.2
+              },
+              {
+                  "lightness": -63.4
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      },
+      {
+          "featureType": "poi",
+          "stylers": [
+              {
+                  "hue": "#9FFF00"
+              },
+              {
+                  "saturation": 0
+              },
+              {
+                  "lightness": 0
+              },
+              {
+                  "gamma": 1
+              }
+          ]
+      }
+    ];
 
 
     var isMap = $('#map');
@@ -240,10 +240,11 @@
       var distance = response.rows[0].elements[0].distance.text;
       var time = response.rows[0].elements[0].duration.text;
       mpg = $('#trip_mpg').val();
-      $('#trip_distance').val(distance);
-      $('#trip_time').val(time);
       var totalCost = Math.floor(((response.rows[0].elements[0].distance.value / 1609) / mpg) * GAS_PRICE);
       totalCost = numeral(totalCost).format('$0,0.00');
+      $('#trip_distance').val(distance);
+      $('#trip_time').val(time);
+      $('#trip_cost').val(totalCost);
 
       $('#travel_info').empty();
       $div = $('<div>');

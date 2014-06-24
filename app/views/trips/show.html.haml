@@ -1,0 +1,12 @@
+.row
+  .large-4.columns
+    = search_form_for @search do |f|
+      %fieldset
+        %legend SEARCH!
+        = f.label :location_start_cont, "Starting Location"
+        = f.text_field :location_start_cont
+    %ul
+    - @trips.each do |trip|
+      %li #{trip.location_start}
+  .large-8.columns
+    #map
