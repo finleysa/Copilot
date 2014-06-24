@@ -7,13 +7,20 @@
         = f.text_field :location_start_cont
     %ul
     - @trips.each do |trip|
-      %li
-        %a{"data-dropdown" => "drop#{trip.id}", :href => "#"} <span>#{trip.cost}</span> #{trip.location_start} --> #{trip.location_end}
-      .f-dropdown.large{"data-dropdown-content" => "", :id => "drop#{trip.id}"}
-        %h4{:href => "#"} <span>Vehicle:</span> #{trip.vehicle}
-        %h4{:href => "#"} <span>Est. Gas Cost:</span> #{trip.cost}
-        %h4{:href => "#"} <span>Distance:</span> #{trip.distance}
-        %h4{:href => "#"} <span>Travel Time:</span> #{trip.time}
+      - if current_user.id != trip.user_id
+        %li
+          %a.showGeo{"data-dropdown" => "drop#{trip.id}",:id => "#{trip.id}", :href => "#"} <span>#{trip.cost}</span> #{trip.location_start} --> #{trip.location_end}
+        .f-dropdown.large{"data-dropdown-content" => "", :id => "drop#{trip.id}"}
+          %h4{:href => "#"} <span>Vehicle:</span> #{trip.vehicle}
+          %h4{:href => "#"} <span>Est. Gas Cost:</span> #{trip.cost}
+          %h4{:href => "#"} <span>Distance:</span> #{trip.distance}
+          %h4{:href => "#"} <span>Travel Time:</span> #{trip.time}
+          %a{:href => trips_reserve_path, :class => "button button-block button-rounded button-royal button-large"}Reserve Seat!</a>
+          %label.hidden{:class => "latStart#{trip.id}"} #{trip.lat_local}
+          %label.hidden{:class => "lngStart#{trip.id}"} #{trip.lng_local}
+          %label.hidden{:class => "latEnd#{trip.id}"} #{trip.lat_dest}
+          %label.hidden{:class => "lngEnd#{trip.id}"} #{trip.lng_dest}
+          %label.tripId #{trip.id}
 
   .large-7.columns.animated.bounceInRight
     #map

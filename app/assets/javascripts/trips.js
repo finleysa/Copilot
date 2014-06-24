@@ -11,17 +11,10 @@
   var latEnd;
   var lngStart;
   var lngEnd;
-  var loc = {};
-  var markers = [];
   var mpg;
   var GAS_PRICE = 3.65;
 
   //////////////////// START MAP STYLE ////////////////////
-
-
-
-
-//////////////////// END MAP STYLE ////////////////////
 
   function init(){
     var map_style = [
@@ -129,6 +122,7 @@
       }
     ];
 
+    //////////////////// END MAP STYLE ////////////////////
 
     var isMap = $('#map');
 
@@ -144,6 +138,8 @@
       map = new google.maps.Map(document.getElementById('map'),
       mapOptions);
     }
+
+    $('.showGeo').click(displayRoute);
   }
 
   function geocode(){
@@ -257,5 +253,28 @@
 
     }
   }
+
+  function displayRoute(){
+      var geoId = $('.tripId').text();
+      var latStart = $('.latStart'+geoId).text();
+      var lngStart = $('.lngStart'+geoId).text();
+      var latEnd = $('.latEnd'+geoId).text();
+      var lngEnd = $('.lngEnd'+geoId).text();
+      console.log(geoId);
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 })();

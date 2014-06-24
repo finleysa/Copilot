@@ -38,6 +38,10 @@ $green: #84bf00;
   }
 }
 
+.hidden {
+  display: none;
+}
+
 #home-container {
   background-size: cover;
   background-image: image_url('storm.jpg') !important;

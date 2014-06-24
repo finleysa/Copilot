@@ -2,6 +2,7 @@ class TripsController < ApplicationController
 
   before_action :authenticate_user!
   #before_action :correct_user, only: :destroy
+  serialize :reserved
 
   def index
     @search = Trip.search(params[:q])
@@ -19,6 +20,9 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @trip.destroy!
     redirect_to current_user
+  end
+
+  def reserve
   end
 
   private

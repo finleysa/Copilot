@@ -12,7 +12,7 @@
     -if current_user
       -if (current_user == @user)
         %h2 Welcome #{@user.username}!
-        %button.button.button-3d-action.button-large "Edit Profile Page"
+        %button.button.button-3d-action.button-large Edit Profile Page
         %fieldset
           - if @user.trips.count > 0
             %h4 Number of Trips: #{@user.trips.count}
