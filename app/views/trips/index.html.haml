@@ -15,7 +15,9 @@
           %h4{:href => "#"} <span>Est. Gas Cost:</span> #{trip.cost}
           %h4{:href => "#"} <span>Distance:</span> #{trip.distance}
           %h4{:href => "#"} <span>Travel Time:</span> #{trip.time}
-          %a{:href => trips_reserve_path, :class => "button button-block button-rounded button-royal button-large"}Reserve Seat!</a>
+          %a{:href => new_reservation_path, :class => "button button-block button-rounded button-royal button-large"}Reserve Seat!</a>
+
+
           %label.hidden{:class => "latStart#{trip.id}"} #{trip.lat_local}
           %label.hidden{:class => "lngStart#{trip.id}"} #{trip.lng_local}
           %label.hidden{:class => "latEnd#{trip.id}"} #{trip.lat_dest}

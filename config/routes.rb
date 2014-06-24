@@ -1,6 +1,7 @@
 TravelBuddy::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :users
+  resources :reservations
   resources :trips, only: [:index, :create, :destroy]
 
   root :to => "static#home"
@@ -12,7 +13,7 @@ TravelBuddy::Application.routes.draw do
   get "static/home"
 
   #match 'auth/:provider/callback', to 'sessions#create'
-  #match 'auth/failure', to: redirect('/')
+  #match 'auth/failure=', to: redirect('/')
   #match 'signout', to: 'sessions#destroy', as: 'signout'
 
   # The priority is based upon order of creation: first created -> highest priority.
