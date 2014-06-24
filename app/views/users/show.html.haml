@@ -33,6 +33,6 @@
                   %td #{a.distance}
                   %td #{a.cost}
                   %td= link_to 'Destroy', a, method: :delete
-
+    / current_user.reservations.map(&:trip)
     %h3 About me:
     %h3 What I like to listen to on road trips:
