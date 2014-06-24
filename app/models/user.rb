@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :trips, dependent: :destroy
 
+  # has_many :trips
+  has_and_belongs_to_many :trips
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -11,7 +12,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates :username, uniqueness: true,
                        format: { with: /\A[a-zA-Z0-9]+\z/, message: "username can only contain letters and numbers"}
-                       
+
   #carrierwave
   mount_uploader :image, ImageUploader
 
