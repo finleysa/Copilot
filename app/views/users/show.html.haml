@@ -13,7 +13,7 @@
       %h2 Welcome #{@user.username}!
       %button.button.button-3d-action.button-large Edit Profile Page
       %fieldset
-        - if @my_trips != 0
+        - if @my_trips.length > 0
           %h4 #{@user.username}'s Trips
           %table
             %tr
@@ -32,11 +32,9 @@
                     %td #{a.location_end}
                     %td #{a.distance}
                     %td #{a.cost}
-                    - if current_user == a.user_id
-                      %td= link_to 'Destroy', a, method: :delete
-                    - else
-                      %td
-                        %a{controller: "reservations", "data-method" => "delete", href: "/trips/#{a.id}", rel: "nofollow"} Destroy
+                    /- if current_user == a.user_id
+                    %td= link_to 'Destroy', a, method: :delete
+
         - if @user.trips.count > 0
           %h4 Number of Trips Reserved: #{@user.trips.count}
           %table
@@ -56,11 +54,8 @@
                     %td #{a.location_end}
                     %td #{a.distance}
                     %td #{a.cost}
-                    - if current_user.id == @user.id
-                      %td= link_to 'Remove', a, method: :delete
-                    - else
-                      %td
-                        %a{controller: "reservations", "data-method" => "delete", href: "/reservations/#{a.id}", rel: "nofollow"} Remove
+                    %td
+                      %a{controller: "reservations", "data-method" => "delete", href: "/reservations/#{a.id}", rel: "nofollow"} Remove
 
 
 

@@ -12,7 +12,7 @@
   var lngStart;
   var lngEnd;
   var mpg;
-  var GAS_PRICE = 3.65;
+  var GAS_PRICE = 3.63;
 
   //////////////////// START MAP STYLE ////////////////////
 

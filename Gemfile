@@ -23,6 +23,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'simple_form'
 gem 'ransack', github: "activerecord-hackery/ransack", branch: "rails-4"
+gem 'twilio-ruby'
 
 group :doc do
   gem 'sdoc', require: false
