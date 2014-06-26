@@ -2,8 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-td {
-  a {
-    color: red !important;
+$green: #84bf00;
+
+table{
+
+  box-shadow: 5px 5px 5px #888888;
+
+  td {
+    a {
+      color: red !important;
+    }
   }
+}
+
+.image {
 }

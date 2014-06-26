@@ -10,29 +10,59 @@
 
   .large-8.columns.animated.fadeInRight
     -if current_user
-      -if (current_user == @user)
-        %h2 Welcome #{@user.username}!
-        %button.button.button-3d-action.button-large Edit Profile Page
-        %fieldset
-          - if @user.trips.count > 0
-            %h4 Number of Trips: #{@user.trips.count}
-            %table
-              %tr
-                %th Date
-                %th Start Location
-                %th End Location
-                %th Distance
-                %th Est. Cost
-              - @user.trips.each do |a|
-                /- if Time.now < a.date
-                - b=/\d\d\d\d-\d\d-\d\d/.match(a.date.to_s)
-                %tr
-                  %td #{b}
-                  %td #{a.location_start}
-                  %td #{a.location_end}
-                  %td #{a.distance}
-                  %td #{a.cost}
-                  %td= link_to 'Destroy', a, method: :delete
-    / current_user.reservations.map(&:trip)
+      %h2 Welcome #{@user.username}!
+      %button.button.button-3d-action.button-large Edit Profile Page
+      %fieldset
+        - if @my_trips != 0
+          %h4 #{@user.username}'s Trips
+          %table
+            %tr
+              %th Date
+              %th Start Location
+              %th End Location
+              %th Distance
+              %th Est. Cost
+              - @my_trips.each do |a|
+                -if a
+                  /- if Time.now < a.date
+                  - b=/\d\d\d\d-\d\d-\d\d/.match(a.date.to_s)
+                  %tr
+                    %td #{b}
+                    %td #{a.location_start}
+                    %td #{a.location_end}
+                    %td #{a.distance}
+                    %td #{a.cost}
+                    - if current_user == a.user_id
+                      %td= link_to 'Destroy', a, method: :delete
+                    - else
+                      %td
+                        %a{controller: "reservations", "data-method" => "delete", href: "/trips/#{a.id}", rel: "nofollow"} Destroy
+        - if @user.trips.count > 0
+          %h4 Number of Trips Reserved: #{@user.trips.count}
+          %table
+            %tr
+              %th Date
+              %th Start Location
+              %th End Location
+              %th Distance
+              %th Est. Cost
+              - @user_reservations.each do |a|
+                -if a
+                  /- if Time.now < a.date
+                  - b=/\d\d\d\d-\d\d-\d\d/.match(a.date.to_s)
+                  %tr
+                    %td #{b}
+                    %td #{a.location_start}
+                    %td #{a.location_end}
+                    %td #{a.distance}
+                    %td #{a.cost}
+                    - if current_user.id == @user.id
+                      %td= link_to 'Remove', a, method: :delete
+                    - else
+                      %td
+                        %a{controller: "reservations", "data-method" => "delete", href: "/reservations/#{a.id}", rel: "nofollow"} Remove
+
+
+
     %h3 About me:
     %h3 What I like to listen to on road trips:

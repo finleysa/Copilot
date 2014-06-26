@@ -73,6 +73,12 @@ li {
   border: 2px solid $orange;
   border-radius: 10px;
 
+  a {
+    color: blue !important;
+    //margin: 5px !important;
+    font-size: 20px !important;
+  }
+
   h4 {
     font-size: 1em;
     color: blue !important;
@@ -82,6 +88,10 @@ li {
     font-weight: bold;
     color: black;
   }
+}
+
+.no_lr_margin {
+  margin: 20px 0 !important;
 }
 
 input[type="text"],

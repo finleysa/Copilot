@@ -1,5 +1,5 @@
 .row
-  .large-5.columns.animated.bounceInLeft
+  .large-6.columns.animated.bounceInLeft
     = search_form_for @search do |f|
       %fieldset
         %legend SEARCH!
@@ -9,12 +9,17 @@
     - @trips.each do |trip|
       - if current_user.id != trip.user_id
         %li
-          %a.showGeo{"data-dropdown" => "drop#{trip.id}",:id => "#{trip.id}", :href => "#"} <span>#{trip.cost}</span> #{trip.location_start} --> #{trip.location_end}
+          - date = /\d\d\d\d-\d\d-\d\d/.match(trip.date.to_s)
+          %a.showGeo{"data-dropdown" => "drop#{trip.id}",:id => "#{trip.id}", :href => "#"} #{date} <span>#{trip.cost}</span> #{trip.location_start} --> #{trip.location_end}
         .f-dropdown.large{"data-dropdown-content" => "", :id => "drop#{trip.id}"}
+          %a{href: "/users/#{trip.user_id}"}
+            %h4 Trip Creator
           %h4{:href => "#"} <span>Vehicle:</span> #{trip.vehicle}
           %h4{:href => "#"} <span>Est. Gas Cost:</span> #{trip.cost}
           %h4{:href => "#"} <span>Distance:</span> #{trip.distance}
           %h4{:href => "#"} <span>Travel Time:</span> #{trip.time}
+          %h4{:href => "#"} <span>Seats Available</span> #{trip.seats_available}
+
           = simple_form_for :reservation, :url => {:action => :create, :controller => 'reservations'} do |f|
             = f.input :trip_id, :as => :hidden, :input_html => { :value => "#{trip.id}" }
             = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
@@ -26,5 +31,5 @@
           %label.hidden{:class => "lngEnd#{trip.id}"} #{trip.lng_dest}
           %label.tripId #{trip.id}
 
-  .large-7.columns.animated.bounceInRight
-    #map
+  .large-6.columns.animated.bounceInRight
+    #map.no_lr_margin

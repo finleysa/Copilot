@@ -2,7 +2,7 @@ class TripsController < ApplicationController
 
   before_action :authenticate_user!
   #before_action :correct_user, only: :destroy
-  
+
   def index
     @search = Trip.search(params[:q])
     @trips = @search.result
@@ -27,6 +27,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:lat_dest, :lng_dest, :lat_local, :lng_local, :date, :location_start, :location_end, :time, :vehicle, :mpg, :seats_available, :distance, :cost)
+    params.require(:trip).permit(:lat_dest, :lng_dest, :lat_local, :lng_local, :date, :location_start, :location_end, :time, :vehicle, :mpg, :seats_available, :distance, :user_id, :cost)
   end
 end

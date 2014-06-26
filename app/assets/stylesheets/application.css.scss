@@ -44,6 +44,7 @@ $green: #84bf00;
 
 #home-container {
   background-size: cover;
+  background-repeat: no-repeat;
   background-image: image_url('storm.jpg') !important;
   height:40em;
   text-shadow:
@@ -65,7 +66,6 @@ h1, h2, h3, h4, h5, label, a, i, p, abbr {
 }
 
 form {
-
   legend {
     border-radius: 5px;
   }
