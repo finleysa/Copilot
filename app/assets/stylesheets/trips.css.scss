@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700);
 @import url(http://fonts.googleapis.com/css?family=Tinos);
 @import url(http://fonts.googleapis.com/css?family=Monoton);
 @import url(http://fonts.googleapis.com/css?family=Rock+Salt);
@@ -56,6 +55,10 @@ fieldset{
 }
 
 ol {
+  span{
+    font-family: "Trade Winds" !important;
+    color: $green !important;
+  }
   li {
     color: white;
   }
@@ -92,6 +95,13 @@ li {
 
 .no_lr_margin {
   margin: 20px 0 !important;
+}
+
+#instructions {
+  h2 {
+    font-family: "Trade Winds" !important;
+    color: $green !important;
+  }
 }
 
 input[type="text"],

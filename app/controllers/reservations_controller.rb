@@ -8,10 +8,11 @@ class ReservationsController < ApplicationController
       trip.seats_available = (trip.seats_available.to_i - 1).to_s
 
       if trip.save!
+        user = User.find(trip.user_id)
         @twilio_client = Twilio::REST::Client.new 'AC364ef2ccd2c79070943d6644b2d573f8', 'abf7617908903c4830754a8102e0f457'
         @twilio_client.account.sms.messages.create(
           :from => "+16158612408",
-          :to => "+16156868516",
+          :to => "+1#{user.phone_number}",
           :body => "#{current_user.username} has just joined your trip from #{trip.location_start} to #{trip.location_end} on #{trip.date}"
         )
         redirect_to current_user

@@ -75,7 +75,7 @@ form {
 }
 
 fieldset {
-
+  padding: 16px !important;
   border: white solid 4px !important;
 
   li {
@@ -131,7 +131,14 @@ ul {
         padding: 0;
 
         a{
+        font-family: "Tinos" !important;
         background: $orange !important;
+        font-size: 16px;
+        text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
         }
 
         a:hover{
@@ -154,10 +161,10 @@ ul {
   line-height: 1;
   font-family: "Trade Winds" !important;
   text-shadow:
-  -1px -1px 0 #000,
-  1px -1px 0 #000,
-  -1px 1px 0 #000,
-  1px 1px 0 #000;
+  -2px -2px 0 #E8A122,
+  2px -2px 0 #E8A122,
+  -2px 2px 0 #E8A122,
+  2px 2px 0 #E8A122;
 }
 
 #logo:hover {

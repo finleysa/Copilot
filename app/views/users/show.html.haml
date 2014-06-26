@@ -1,5 +1,5 @@
 .row
-  .large-4.columns.animated.fadeInLeft
+  .large-2.columns.animated.fadeInLeft
     %h1 #{@user.username}'s Profile
     .image
       = image_tag @user.image_url.to_s, class: 'profile-image'
@@ -10,7 +10,7 @@
 
   .large-8.columns.animated.fadeInRight
     -if current_user
-      %h2 Welcome #{@user.username}!
+      %h2 Welcome, #{@user.username}!
       %button.button.button-3d-action.button-large Edit Profile Page
       %fieldset
         - if @my_trips.length > 0
@@ -32,8 +32,8 @@
                     %td #{a.location_end}
                     %td #{a.distance}
                     %td #{a.cost}
-                    /- if current_user == a.user_id
-                    %td= link_to 'Destroy', a, method: :delete
+                    - if a.user_id.to_s == current_user.id.to_s
+                      %td= link_to 'Delete', a, method: :delete, :class => "button button-3d-caution button-tiny"
 
         - if @user.trips.count > 0
           %h4 Number of Trips Reserved: #{@user.trips.count}
@@ -54,8 +54,9 @@
                     %td #{a.location_end}
                     %td #{a.distance}
                     %td #{a.cost}
-                    %td
-                      %a{controller: "reservations", "data-method" => "delete", href: "/reservations/#{a.id}", rel: "nofollow"} Remove
+                    - if a.user_id.to_s == current_user.id.to_s
+                      %td
+                        %a{class: "button button-3d-caution button-tiny", controller: "reservations", "data-method" => "delete", href: "/reservations/#{a.id}", rel: "nofollow"} Delete
 
 
 

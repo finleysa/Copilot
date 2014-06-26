@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :image
-  validates_presence_of :username, :email, :image
-  validates_uniqueness_of :email
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :image, :phone_number
+  validates_presence_of :username, :email, :image, :phone_number
+  validates_uniqueness_of :email, :phone_number
   validates :username, uniqueness: true,
                        format: { with: /\A[a-zA-Z0-9]+\z/, message: "username can only contain letters and numbers"}
 
