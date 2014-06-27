@@ -3,10 +3,13 @@
     = search_form_for @search do |f|
       %fieldset
         %legend SEARCH!
-        = f.label :location_start_cont, "Starting Location"
+        = f.label :location_start_cont, "Start Location"
         = f.text_field :location_start_cont
+        = f.label :location_end_cont, "End Location"
+        = f.text_field :location_end_cont
+        = f.submit "Search"
     %ul
-    - @trips.each do |trip|
+    - @trips.limit(10).each do |trip|
       - if current_user.id != trip.user_id
         %li
           - date = /\d\d\d\d-\d\d-\d\d/.match(trip.date.to_s)
@@ -25,11 +28,10 @@
               = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
               = f.button :submit, class: 'button button-block button-rounded button-royal button-large'
 
-          %label.hidden{:class => "latStart#{trip.id}"} #{trip.lat_local}
-          %label.hidden{:class => "lngStart#{trip.id}"} #{trip.lng_local}
-          %label.hidden{:class => "latEnd#{trip.id}"} #{trip.lat_dest}
-          %label.hidden{:class => "lngEnd#{trip.id}"} #{trip.lng_dest}
-          %label.tripId #{trip.id}
+          %label.hidden{:class => "latStart"} *#{trip.lat_local}
+          %label.hidden{:class => "lngStart"} *#{trip.lng_local}
+          %label.hidden{:class => "latEnd"} *#{trip.lat_dest}
+          %label.hidden{:class => "lngEnd"} *#{trip.lng_dest}
 
   .large-6.columns.animated.bounceInRight
     #map.no_lr_margin

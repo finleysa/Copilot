@@ -1,17 +1,27 @@
 .row
-  .large-2.columns.animated.fadeInLeft
-    %h1 #{@user.username}'s Profile
-    .image
-      = image_tag @user.image_url.to_s, class: 'profile-image'
+  .large-6.columns.animated.bounceInLeft
+    %h1.center #{@user.username}'s Profile
+    %h4.center= @user.email
+    %fieldset
+      .profile-image{:style => "background-image:url('#{@user.image_url.to_s}')"}
 
-    %h4= @user.email
+    /= image_tag @user.image_url.to_s, class: 'profile-image'
+
+  .large-6.columns.animated.bounceInDown
+    - if current_user == @user
+      .space
+      = link_to 'Edit Profile', edit_user_registration_path, class: "button button-3d-action button-large"
+      .space
+    - else
+      .space
+    - if @user.about_me
+      %h3 About me:
+      %p= @user.about_me
 
     /- if current_user == @user
-
-  .large-8.columns.animated.fadeInRight
+.row
+  .large-6.columns.animated.bounceInUp
     -if current_user
-      %h2 Welcome, #{@user.username}!
-      %button.button.button-3d-action.button-large Edit Profile Page
       %fieldset
         - if @my_trips.length > 0
           %h4 #{@user.username}'s Trips
@@ -20,7 +30,6 @@
               %th Date
               %th Start Location
               %th End Location
-              %th Distance
               %th Est. Cost
               - @my_trips.each do |a|
                 -if a
@@ -30,35 +39,29 @@
                     %td #{b}
                     %td #{a.location_start}
                     %td #{a.location_end}
-                    %td #{a.distance}
                     %td #{a.cost}
                     - if a.user_id.to_s == current_user.id.to_s
                       %td= link_to 'Delete', a, method: :delete, :class => "button button-3d-caution button-tiny"
 
-        - if @user.trips.count > 0
-          %h4 Number of Trips Reserved: #{@user.trips.count}
-          %table
-            %tr
-              %th Date
-              %th Start Location
-              %th End Location
-              %th Distance
-              %th Est. Cost
-              - @user_reservations.each do |a|
-                -if a
-                  /- if Time.now < a.date
-                  - b=/\d\d\d\d-\d\d-\d\d/.match(a.date.to_s)
-                  %tr
-                    %td #{b}
-                    %td #{a.location_start}
-                    %td #{a.location_end}
-                    %td #{a.distance}
-                    %td #{a.cost}
-                    - if a.user_id.to_s == current_user.id.to_s
-                      %td
-                        %a{class: "button button-3d-caution button-tiny", controller: "reservations", "data-method" => "delete", href: "/reservations/#{a.id}", rel: "nofollow"} Delete
-
-
-
-    %h3 About me:
-    %h3 What I like to listen to on road trips:
+  .large-6.columns.animated.bounceInRight
+    - if @user.trips.count > 0
+      %fieldset
+        %h4 Number of Trips Reserved: #{@user.trips.count}
+        %table
+          %tr
+            %th Date
+            %th Start Location
+            %th End Location
+            %th Est. Cost
+            - @user_reservations.each do |a|
+              -if a
+                /- if Time.now < a.date
+                - b=/\d\d\d\d-\d\d-\d\d/.match(a.date.to_s)
+                %tr
+                  %td #{b}
+                  %td #{a.location_start}
+                  %td #{a.location_end}
+                  %td #{a.cost}
+                  - if a.user_id.to_s == current_user.id.to_s
+                    %td
+                      %a{class: "button button-3d-caution button-tiny", controller: "reservations", "data-method" => "delete", href: "/reservations/#{a.id}", rel: "nofollow"} Delete

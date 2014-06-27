@@ -7,9 +7,9 @@
       %h2 Instructions
       %ol
         %li Fill out the form entirely
-        %li Use only locations in the United States (City, State)
-        %li Click <span>Geocode</span> button
-        %li If you are satisfied with your trip click 'Save Trip'
+        %li Use only locations in the United States (City, State) or Canada if you must (City, Province)
+        %li Click <span class="green">Geocode</span> button
+        %li If you are satisfied with your trip click <span class="purple"> Save Trip</span>
 
   .large-8.columns.animated.fadeInRightBig
     = simple_form_for :trip, :url => {:action => :create} do |f|

@@ -7,6 +7,7 @@
   var latLngStart;
   var latLngEnd;
   //
+  var drivePath;
   var latStart;
   var latEnd;
   var lngStart;
@@ -131,6 +132,8 @@
       $('#geocode').click(geocode);
       //$('#search').click(search);
       displayMap(39.8282, -98.5795, 4);
+
+      displayRoute();
     }
 
     function displayMap(lat, lng, zoom){
@@ -138,8 +141,6 @@
       map = new google.maps.Map(document.getElementById('map'),
       mapOptions);
     }
-
-    $('.showGeo').click(displayRoute);
   }
 
   function geocode(){
@@ -149,16 +150,9 @@
     geocodeLocal(start, function(startGeo){
       geocodeDest(end, function(endGeo){
 
-        var drivePath = new google.maps.Polyline({
-          path: [startGeo, endGeo],
-          geodesic: true,
-          strokeColor: '#E8A122',
-          strokeOpacity: 1.0,
-          Strokeweight: 2
-        });
+        drawDrivePath(startGeo, endGeo);
 
         drivePath.setMap(map);
-
         calculateDistances();
 
       });
@@ -232,7 +226,6 @@
 
   function callback(response, status){
     if(status == 'OK'){
-      console.log(response.rows[0].elements[0]);
       var distance = response.rows[0].elements[0].distance.text;
       var time = response.rows[0].elements[0].duration.text;
       mpg = $('#trip_mpg').val();
@@ -255,26 +248,48 @@
   }
 
   function displayRoute(){
-      var geoId = $('.tripId').text();
-      var latStart = $('.latStart'+geoId).text();
-      var lngStart = $('.lngStart'+geoId).text();
-      var latEnd = $('.latEnd'+geoId).text();
-      var lngEnd = $('.lngEnd'+geoId).text();
-      console.log(geoId);
+      var latStart = $('.latStart').text().split('*');
+      var lngStart = $('.lngStart').text().split('*');
+      var latEnd = $('.latEnd').text().split('*');
+      var lngEnd = $('.lngEnd').text().split('*');
+      latStart.shift();
+      lngStart.shift();
+      latEnd.shift();
+      lngEnd.shift();
+
+      var routeStart = [];
+      var routeEnd = [];
+      var ruoteLatLng;
+      for(i=0; i < latStart.length; i++) {
+        routeLatLng = new google.maps.LatLng(latStart[i],lngStart[i]);
+        addMarker("Weeeee", routeLatLng);
+        routeStart[i] = routeLatLng;
+      }
+
+      for(i=0; i < lngStart.length; i++) {
+        routeLatLng = new google.maps.LatLng(latEnd[i],lngEnd[i]);
+        addMarker("Weeeee", routeLatLng);
+        routeEnd[i] = routeLatLng;
+      }
+
+      for(i=0; i < routeStart.length; i++) {
+        drawDrivePath(routeStart[i], routeEnd[i]);
+      }
 
   }
 
+  function drawDrivePath(startGeo, endGeo){
+    console.log(startGeo+' '+endGeo);
+    drivePath = new google.maps.Polyline({
+       path: [startGeo, endGeo],
+       geodesic: true,
+       strokeColor: '#E8A122',
+       strokeOpacity: 1.0,
+       Strokeweight: 2
+     });
 
+     drivePath.setMap(map);
 
-
-
-
-
-
-
-
-
-
-
+  }
 
 })();

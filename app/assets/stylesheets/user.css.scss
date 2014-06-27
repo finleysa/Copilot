@@ -5,14 +5,12 @@
 $green: #84bf00;
 
 table{
-
   box-shadow: 5px 5px 5px #888888;
-
-  td {
-    a {
-    }
-  }
 }
 
-.image {
+.profile-image{
+  height: 350px;
+  width: 350px;
+  background-size: cover;
+  margin: 0 0 0 40px;
 }
