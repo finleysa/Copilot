@@ -5,6 +5,5 @@ class CreateTrips < ActiveRecord::Migration
       t.timestamps
 
     end
-    add_index("users", "users_id")
   end
 end
