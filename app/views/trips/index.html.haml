@@ -7,7 +7,7 @@
         = f.text_field :location_start_cont
         = f.label :location_end_cont, "End Location"
         = f.text_field :location_end_cont
-        = f.submit "Search"
+        = f.submit "Search", class: 'button button-block button-rounded button-royal button-large'
     %ul
     - @trips.limit(10).each do |trip|
       - if current_user.id != trip.user_id
