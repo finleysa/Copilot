@@ -31,6 +31,7 @@
               %th Start Location
               %th End Location
               %th Est. Cost
+              %th Seats Left
               - @my_trips.each do |a|
                 -if a
                   /- if Time.now < a.date
@@ -40,6 +41,8 @@
                     %td #{a.location_start}
                     %td #{a.location_end}
                     %td #{a.cost}
+                    %td #{a.seats_available}
+
                     - if a.user_id.to_s == current_user.id.to_s
                       %td= link_to 'Delete', a, method: :delete, :class => "button button-3d-caution button-tiny"
 
@@ -53,6 +56,7 @@
             %th Start Location
             %th End Location
             %th Est. Cost
+            %th Total Seats
             - @user_reservations.each do |a|
               -if a
                 /- if Time.now < a.date
@@ -62,6 +66,7 @@
                   %td #{a.location_start}
                   %td #{a.location_end}
                   %td #{a.cost}
+                  %td #{a.starting_seats_available}
                   - if a.user_id.to_s == current_user.id.to_s
                     %td
                       %a{class: "button button-3d-caution button-tiny", controller: "reservations", "data-method" => "delete", href: "/reservations/#{a.id}", rel: "nofollow"} Delete

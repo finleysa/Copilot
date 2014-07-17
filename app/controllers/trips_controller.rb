@@ -10,6 +10,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = current_user.trips.new(trip_params)
+    @trip.starting_seats_available = trip_params[:seats_available]
     if @trip.save
       redirect_to current_user
     end
